@@ -1,4 +1,3 @@
-import urllib.request
 def solve1():
     sums = 1
     add = 1
