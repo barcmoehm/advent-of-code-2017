@@ -13,6 +13,6 @@ def solve1(fname):
             val -= 1
         cycles += 1
     print("total:", len(seen), cycles)
-    
+    print("size:", cycles - seen[tuple(content)])
 
 solve1("day06.txt")
