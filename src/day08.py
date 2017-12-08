@@ -23,7 +23,9 @@ for line in file:
         nums[to_increment] = 0
     if COMPARE_OPERATORS[comp_op](nums[to_check], int(num2)):
         nums[to_increment] = OPERATORS[op](nums[to_increment], int(num))
-
+    if(nums[to_increment] > highest):
+        highest = nums[to_increment]
 print(max([x for x in nums.values()]))
+print(highest)
 
 
