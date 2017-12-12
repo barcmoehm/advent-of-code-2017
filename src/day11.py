@@ -20,6 +20,6 @@ for d in input:
     val = abs(x) + abs(y) - min(abs(x), abs(y))
     highest = max(highest, val)
 print(abs(x) + abs(y) - min(abs(x), abs(y)))
-#print(highest)
+print(highest)
 
 
