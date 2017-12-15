@@ -1,5 +1,9 @@
-def next_value(v, factor):
-    return (v * factor) % 2147483647
+import itertools
+def next_value(v, factor, multiple=1):
+    while True:
+        v = (v * factor) % 2147483647
+        if v % multiple == 0:
+            yield v
 
 
 def compare(a, b):
@@ -8,13 +12,11 @@ def compare(a, b):
 
 factor_a = 16807
 factor_b = 48271
-
-a, b = 679,  771
+a, b = next_value(679, factor_a, 4),  next_value(771, factor_b, 8)
 count = 0
-for i in range(0, 40000000):
-    a = next_value(a, factor_a)
-    b = next_value(b, factor_b)
+for a, b in itertools.islice(zip(a, b), 5000000):
     if compare(a, b):
         count += 1
+
 
 print(count)
