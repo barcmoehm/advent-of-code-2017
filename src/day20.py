@@ -1,3 +1,4 @@
+from collections import defaultdict
 class Particle:
     def __init__(self, p, v, a):
         self.p = p
@@ -44,4 +45,14 @@ while True:
         if part is None or particle.dist() < dist:
             part = i
             dist = particle.dist()
-    print(part)
+
+    all_pos = defaultdict(list)
+    for i, particle in particles.items():
+        curr = tuple(particle.p)
+        all_pos[curr].append(i)
+
+    for curr, v in all_pos.items():
+        if len(v) > 1:
+            for i in v:
+                del particles[i]
+    print(len(particles))
