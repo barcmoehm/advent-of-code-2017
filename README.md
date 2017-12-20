@@ -8,3 +8,5 @@ http://adventofcode.com/
 * Day 12
 * Day 14
 * Day 16 Challenge 2
+* Day 18
+* Day 19
