@@ -1,4 +1,6 @@
 import itertools
+
+
 def next_value(v, factor, multiple=1):
     while True:
         v = (v * factor) % 2147483647
