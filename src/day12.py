@@ -9,12 +9,30 @@ def connected(neighbours, start, seen=set()):
         return 1 + sum([connected(neighbours, n, seen) for n in neighbours[start]])
 
 
-with open('day12.txt') as inp:
-    programs = defaultdict(set)
-    for line in inp:
+def connected_group(neighbours, start, seen=set()):
+    if start in seen:
+        return seen
+    else:
+        seen.add(start)
+        # print(seen)
+        for child in neighbours[start]:
+            seen = connected_group(neighbours, child, seen)
+        # print(seen)
+        return seen
+
+
+programs = defaultdict(set)
+with open('day12.txt') as content:
+    for line in content:
         left, right = line.strip().split(' <-> ')
         programs[left] = set(right.split(', '))
-        for p in programs[left]:
-            programs[p].add(left)
+        [programs[p].add(left) for p in programs[left]]
 
 print(connected(programs, '0'))
+
+groups = set()
+for key in programs.keys():
+    # hashable (immutable) set
+    groups.add(frozenset(connected_group(programs, key)))
+
+print(len(groups))
